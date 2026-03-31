@@ -21,11 +21,11 @@ interface TaskFile {
 
 function getTaskFiles(): TaskFile[] {
   const files = fs.readdirSync(TASKS_DIR)
-    .filter(f => f.endsWith(".md") && /^\d{2}-/.test(f))
+    .filter(f => f.endsWith(".md") && /^\d{2}[a-z]?-/.test(f))
     .sort();
 
   return files.map(filename => {
-    const match = filename.match(/^(\d{2})-(.+)\.md$/);
+    const match = filename.match(/^(\d{2}[a-z]?)-(.+)\.md$/);
     if (!match) throw new Error(`Invalid task filename: ${filename}`);
     return {
       number: match[1],
@@ -45,7 +45,7 @@ function getCompletedTasks(): Set<string> {
     });
     const completed = new Set<string>();
     for (const line of log.split("\n")) {
-      const match = line.match(/\[task-complete\]\s+(\d{2})-/);
+      const match = line.match(/\[task-complete\]\s+(\d{2}[a-z]?)-/);
       if (match) {
         completed.add(match[1]);
       }
