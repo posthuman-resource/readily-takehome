@@ -113,3 +113,8 @@ The function is resumable:
   - Progress is reported via the callback
 
 - The overall compliance summary for the Easy example shows a mix of met/partial/not_met/unclear (not all one status)
+
+
+## Knowledge Sharing
+
+If you discover something during this task that future tasks should know about (undocumented API behavior, gotchas, architectural decisions, things that almost broke), add it to `CLAUDE.md` under a relevant section. Every subsequent task executor reads that file.

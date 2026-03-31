@@ -91,3 +91,8 @@ npm start
 - Semantic search returns relevant results
 - The app starts cleanly with an empty database (no crashes on first load)
 - The app handles the case where only policies are seeded (no regulatory docs)
+
+
+## Knowledge Sharing
+
+If you discover something during this task that future tasks should know about (undocumented API behavior, gotchas, architectural decisions, things that almost broke), add it to `CLAUDE.md` under a relevant section. Every subsequent task executor reads that file.

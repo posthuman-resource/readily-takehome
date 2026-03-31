@@ -94,3 +94,8 @@ ORDER BY r.requirement_number
 - Detail page shows the policy's full extracted text
 - Navigation between Compliance Browser and Policy Explorer works
 - `npm run build` succeeds
+
+
+## Knowledge Sharing
+
+If you discover something during this task that future tasks should know about (undocumented API behavior, gotchas, architectural decisions, things that almost broke), add it to `CLAUDE.md` under a relevant section. Every subsequent task executor reads that file.

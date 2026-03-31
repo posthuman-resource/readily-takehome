@@ -178,3 +178,8 @@ Set `maxSteps: 5` to allow the model to make multiple tool calls in sequence. Fo
 - Multi-step tool calling works: complex questions trigger multiple tool calls
 - Error handling: if a tool fails, the model gracefully reports the error
 - `npm run build` succeeds
+
+
+## Knowledge Sharing
+
+If you discover something during this task that future tasks should know about (undocumented API behavior, gotchas, architectural decisions, things that almost broke), add it to `CLAUDE.md` under a relevant section. Every subsequent task executor reads that file.

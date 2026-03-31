@@ -122,3 +122,8 @@ Chat history can be stored in the `chat_messages` table. For MVP, in-memory chat
 - File upload works: dropping a PDF starts ingestion and shows progress
 - The chat panel can be closed without losing conversation context
 - `npm run build` succeeds
+
+
+## Knowledge Sharing
+
+If you discover something during this task that future tasks should know about (undocumented API behavior, gotchas, architectural decisions, things that almost broke), add it to `CLAUDE.md` under a relevant section. Every subsequent task executor reads that file.

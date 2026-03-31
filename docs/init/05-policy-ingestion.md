@@ -114,3 +114,8 @@ The `onProgress` callback is called with status updates at each major step. This
   - No chunk exceeds ~600 tokens (target + buffer)
 
 - Test resumability: interrupt mid-embedding, restart, verify it picks up where it left off
+
+
+## Knowledge Sharing
+
+If you discover something during this task that future tasks should know about (undocumented API behavior, gotchas, architectural decisions, things that almost broke), add it to `CLAUDE.md` under a relevant section. Every subsequent task executor reads that file.

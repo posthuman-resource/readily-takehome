@@ -185,3 +185,8 @@ Render.com web services have a default request timeout (typically 30 seconds for
 - `curl http://localhost:3000/api/health` returns `{"status":"ok","policiesIndexed":true,...}`
 
 - File upload saves the PDF to the correct DATA_DIR location
+
+
+## Knowledge Sharing
+
+If you discover something during this task that future tasks should know about (undocumented API behavior, gotchas, architectural decisions, things that almost broke), add it to `CLAUDE.md` under a relevant section. Every subsequent task executor reads that file.

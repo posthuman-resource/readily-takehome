@@ -2,7 +2,7 @@
 
 ## Objective
 
-Configure the project for deployment on Render.com with a persistent disk for the SQLite database and uploaded files.
+Ensure the app builds and runs correctly in production on Render.com. The Render web service is already configured - deployment happens automatically on git push.
 
 ## Details
 
@@ -10,145 +10,66 @@ Configure the project for deployment on Render.com with a persistent disk for th
 
 Read `node_modules/next/dist/docs/` before writing any code. This version has breaking changes.
 
-### Render.com Configuration
+### Environment
 
-Create `render.yaml`:
+- Render web service is already set up
+- Persistent disk: 10GB mounted at `/var/data`
+- Deploy trigger: `git push` to the repo
+- Env vars set in Render dashboard:
+  - `ANTHROPIC_API_KEY`
+  - `OPENAI_API_KEY`
+  - `DATA_DIR=/var/data` (this is also the default, so optional)
 
-```yaml
-services:
-  - type: web
-    name: readily-compliance
-    runtime: node
-    buildCommand: npm install && npm run build
-    startCommand: npm start
-    envVars:
-      - key: ANTHROPIC_API_KEY
-        sync: false
-      - key: OPENAI_API_KEY
-        sync: false
-      - key: DATA_DIR
-        value: /var/data
-      - key: NODE_ENV
-        value: production
-    disk:
-      name: data
-      mountPath: /var/data
-      sizeGB: 1
-```
+### What Needs to Work
 
-### Persistent Disk Layout
+1. **`npm run build` must succeed** without connecting to SQLite at build time. The database lives on the persistent disk which only exists at runtime.
+   - Use lazy/dynamic initialization for the database connection
+   - Server Components that read from the DB should work at request time, not build time
+   - If better-sqlite3 or sqlite-vector cause build issues with Turbopack, add them to `serverExternalPackages` in `next.config.ts`
 
-On Render, the persistent disk at `/var/data` will contain:
-```
-/var/data/
-  db/
-    app.sqlite         # The database (survives restarts and deploys)
-  uploads/
-    regulatory/        # Uploaded regulatory docs
-    policies/          # Policy corpus
-  processing/          # Temp files (cleaned up after use)
-```
+2. **`npm start` must work** with `DATA_DIR=/var/data`
+   - On first start, `lib/ensure-dirs.ts` creates the directory structure under `/var/data/`
+   - Database migrations run automatically on first connection
+   - The app should show an empty state gracefully if no data is seeded yet
 
-### First-Run Setup
+3. **Seeding on Render**: After deploy, seeding runs via Render shell or a one-off job:
+   ```bash
+   npx tsx scripts/seed.ts
+   ```
+   The seeded SQLite DB at `/var/data/db/app.sqlite` persists across deploys.
 
-The database and policy corpus need to be seeded before the app serves users. Options:
+### Production Checklist
 
-**Option A (recommended)**: Run seed as part of the build or a one-time job:
-- Add a `postbuild` script that runs `npx tsx scripts/seed.ts --policies-only`
-- Run regulatory doc processing manually after deploy via CLI or web upload
+- `.env` is in `.gitignore`
+- `.env.example` documents the three required env vars
+- `engines` field in `package.json`: `"node": ">=20.9.0"`
+- `/api/health` returns status including whether policies are indexed
+- The app handles `DATA_DIR` pointing to any writable directory
 
-**Option B**: Run seed on first request:
-- Check if the database is empty on app startup
-- If empty, kick off seeding in the background
-- Show a "Setting up..." page to users
+### Native Module Considerations
 
-**Option C**: Pre-seed locally and upload:
-- Seed the database locally
-- Copy the SQLite file to the persistent disk
-- This is fastest but least reproducible
+`better-sqlite3` and `@sqliteai/sqlite-vector` are native modules. If Turbopack has issues:
 
-For the takehome, Option A is best. Add to `package.json`:
-```json
-{
-  "scripts": {
-    "seed": "tsx scripts/seed.ts",
-    "seed:policies": "tsx scripts/seed.ts --policies-only",
-    "seed:easy": "tsx scripts/ingest.ts 'data/Example Input Doc - Easy.pdf' --type regulatory"
-  }
+```typescript
+// next.config.ts
+import type { NextConfig } from 'next'
+
+const nextConfig: NextConfig = {
+  serverExternalPackages: ['better-sqlite3', '@sqliteai/sqlite-vector'],
 }
+
+export default nextConfig
 ```
-
-### Build Configuration
-
-Ensure the production build works:
-- `npm run build` must succeed
-- The build should NOT try to connect to the database (SQLite driver issues in build-time)
-- Use dynamic imports or lazy initialization for the database connection
-- Server Components that read from the DB should work at runtime, not build time
-
-### Environment Variables
-
-Document all required env vars:
-- `ANTHROPIC_API_KEY` (required for ingestion pipeline)
-- `OPENAI_API_KEY` (required for embeddings + chat)
-- `DATA_DIR` (default: `/var/data`)
-
-### Startup Checks
-
-Add a startup check in the Next.js app that:
-1. Verifies DATA_DIR exists and is writable
-2. Ensures the directory structure is created
-3. Runs pending database migrations
-4. Optionally checks if the database has seeded data
-
-This can be in `lib/db/index.ts` or a middleware.
-
-### Health Check
-
-The `/api/health` endpoint (from task 10) should be configured as the health check URL in Render:
-```yaml
-healthCheckPath: /api/health
-```
-
-### Node.js Version
-
-Ensure Render uses a compatible Node.js version. Create `.node-version`:
-```
-20
-```
-
-Or add to `package.json`:
-```json
-{
-  "engines": {
-    "node": ">=20.9.0"
-  }
-}
-```
-
-### Static Assets
-
-The `data/` directory with PDFs should NOT be included in the production build. It's only needed for seeding. Add to `.gitignore` or ensure the build doesn't try to include it.
-
-Actually, since the data directory is needed for seeding on Render, it should be in the repo. But it should not be processed by Next.js/Turbopack. It won't be by default since it's not in the `app/` or `public/` directories.
-
-### GitHub Repository
-
-Ensure the repo is ready for submission:
-- `.env` is in `.gitignore` (don't commit API keys)
-- `.env.example` documents all required variables
-- README.md has setup instructions
-- The repo is clean (no unnecessary files)
 
 ## Acceptance Criteria
 
-- `render.yaml` exists with correct configuration
-- `npm run build` succeeds in a clean environment
-- `npm start` starts the production server
-- `.node-version` or `engines` field specifies Node.js 20+
-- `.env.example` documents all required environment variables
-- `/api/health` returns `{"status":"ok",...}`
-- The app works with `DATA_DIR` pointing to a local directory (for development)
-- The app works with `DATA_DIR` pointing to `/var/data` (for production)
-- The seeded database persists across app restarts
-- Deploy to Render succeeds and the app is accessible at a live URL
+- `npm run build` succeeds without a database present
+- `npm start` starts the server and `/api/health` responds
+- The app shows an empty/welcome state when no data is seeded
+- `git push` triggers a successful deploy on Render
+- After seeding on Render, the compliance browser shows data at the live URL
+
+
+## Knowledge Sharing
+
+If you discover something during this task that future tasks should know about (undocumented API behavior, gotchas, architectural decisions, things that almost broke), add it to `CLAUDE.md` under a relevant section. Every subsequent task executor reads that file.

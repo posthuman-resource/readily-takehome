@@ -112,3 +112,8 @@ The Hard example is 145 pages (~70K tokens). This may exceed the model's output 
   - Requirements have section references
 
 - The extraction prompt is robust enough to handle both document types without manual configuration
+
+
+## Knowledge Sharing
+
+If you discover something during this task that future tasks should know about (undocumented API behavior, gotchas, architectural decisions, things that almost broke), add it to `CLAUDE.md` under a relevant section. Every subsequent task executor reads that file.

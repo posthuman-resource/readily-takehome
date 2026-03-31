@@ -100,3 +100,8 @@ These are nice-to-haves. At minimum, the script must work with no flags to seed 
 - `npx tsx scripts/seed.ts` (full seed) processes all 373 policy docs and both regulatory docs
   - This is the "big run" that populates the database for the web app
   - Expected time: 5-15 minutes for policies, plus 10-20 minutes for regulatory docs
+
+
+## Knowledge Sharing
+
+If you discover something during this task that future tasks should know about (undocumented API behavior, gotchas, architectural decisions, things that almost broke), add it to `CLAUDE.md` under a relevant section. Every subsequent task executor reads that file.
