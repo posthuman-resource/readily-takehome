@@ -1,0 +1,218 @@
+[
+  {
+    "filename": "Example Input Doc - Hard.pdf",
+    "category": "input",
+    "fileSizeBytes": 1652967,
+    "pages": 145,
+    "totalCharCount": 282865,
+    "estimatedTokens": 70717,
+    "extractionTimeMs": 1700,
+    "charsPerPage": 1951,
+    "emptyPages": [],
+    "extremelyLongPages": [],
+    "hasGarbledText": true,
+    "garbledSample": "………………………………………………………",
+    "repeatedPatterns": [
+      "8x: \"No further criteria are required to be met to qualify for this ECM Population of\"",
+      "8x: \"C. Operational Guidance:\"",
+      "8x: \"A. Population of Focus Eligibility Criteria:\"",
+      "7x: \"Focus. MCPs may not impose additional eligibility requirements for\"",
+      "7x: \"Identification:\""
+    ],
+    "textSample": {
+      "first500": "1\nCALAIM\nENHANCED CARE\nMANAGEMENT POLICY\nGUIDE\nUpdated January 2026\n\n-- 1 of 145 --\n\n2\nTABLE OF CONTENTS\nI. Introduction ..............................................................................................................................................3\nII. What is Enhanced Care Management (ECM)? ..........................................................................5\nIII. ECM Implementation Timeline...................................................................................",
+      "last500": "P claims\nto MCPs.\nMember Information\nFile Guidance\nDefines standards for data sharing between MCPs and\nECM Providers.\nQuarterly Implementation\nMonitoring Report\nGuidance\nTime-limited quarterly MCP reporting requirements\nand Excel template related to ECM and Community\nSupports implementation across multiple domains.\nThey are “supplemental” to encounters.\nECM & Community Supports\nCoding Options\nContains the HCPCS codes that MCPs must use for\nECM and Community Supports services.\n\n-- 145 of 145 --\n\n"
+    },
+    "error": null
+  },
+  {
+    "filename": "AA.1000_CEO20250206_v20250201.pdf",
+    "category": "AA",
+    "fileSizeBytes": 616251,
+    "pages": 72,
+    "totalCharCount": 256786,
+    "estimatedTokens": 64197,
+    "extractionTimeMs": 550,
+    "charsPerPage": 3566,
+    "emptyPages": [],
+    "extremelyLongPages": [],
+    "hasGarbledText": false,
+    "garbledSample": "☒☐☐☐’’’’’’’‘’’––’’’’’“”“”’–’’’’’§’’’’§’’’’’’’’’’’’’’’’’’’’—’’’’’’’’’’’’’’’’’’’’’’’’’’’’’’’’®’’’’’’’’",
+    "repeatedPatterns": [],
+    "textSample": {
+      "first500": "Page 1 of 72\nPolicy: AA.1000\nTitle: Medi-Cal Glossary of Terms\nDepartment: Office of Compliance\nSection: Regulatory Affairs & Compliance\nCEO Approval: /s/ Michael Hunn 02/06/2025\nEffective Date: 01/01/2008\nRevised Date: 02/01/2025\nApplicable to: ☒ Medi-Cal\n☐ OneCare\n☐ PACE\n☐ Administrative\nI. PURPOSE\nThis policy defines terms used in CalOptima Health’s Medi-Cal policies and procedures, unless otherwise\nexpressly stated.\nII. DEFINITIONS\n340B Drug Pricing Program: Program established pursuant to s",
+      "last500": ".1000 Medi-Cal Glossary of Terms Medi-Cal\nRevised 10/01/2023 AA.1000 Medi-Cal Glossary of Terms Medi-Cal\nRevised 12/01/2023 AA.1000 Medi-Cal Glossary of Terms Medi-Cal\nRevised 12/01/2023 AA.1000 Medi-Cal Glossary of Terms Medi-Cal\nRevised 02/01/2024 AA.1000 Medi-Cal Glossary of Terms Medi-Cal\nRevised 03/01/2024 AA.1000 Medi-Cal Glossary of Terms Medi-Cal\nRevised 05/01/2024 AA.1000 Medi-Cal Glossary of Terms Medi-Cal\nRevised 02/01/2025 AA.1000 Medi-Cal Glossary of Terms Medi-Cal\n\n-- 72 of 72 --\n\n"
+    },
+    "error": null
+  },
+  {
+    "filename": "Example Input Doc - Easy.pdf",
+    "category": "input",
+    "fileSizeBytes": 484399,
+    "pages": 14,
+    "totalCharCount": 29805,
+    "estimatedTokens": 7452,
+    "extractionTimeMs": 101,
+    "charsPerPage": 2129,
+    "emptyPages": [],
+    "extremelyLongPages": [],
+    "hasGarbledText": false,
+    "garbledSample": "☐☐☐’’’’’’“”’’’’’’’’’’’’’’’’’’’’“”",
+    "repeatedPatterns": [
+      "14x: \"Rev. 08/2023\"",
+      "7x: \"(Reference: APL 25-008, page 2)\"",
+      "5x: \"(Reference: APL 25-008, page 13)\"",
+      "5x: \"(Reference: APL 25-008, page 14)\"",
+      "5x: \"(Reference: APL 25-008, page 16)\""
+    ],
+    "textSample": {
+      "first500": "Rev. 08/2023\nS UBMISSION R EVIEW FORM\nDHCS MCOD C ONTRACT OVERSIGHT B RANCH\nREVIEWER: \tDATE RECEIVED FROM PLAN:\nUNIT:\nRETURN TO: \tDHCS REVIEW DUE DATE:\nPLAN NAME:\nCOUNTY(S):\nSUBMISSION ITEM: Policy and Procedure (P&P) regarding All Plan Letter (APL) 25-008: Hospice\nServices and Medi-Cal Managed Care\n☐ A PPROVED AS S UBMITTED\n☐ A DDITIONAL I NFORMATION REQUESTED #__ (LIST BELOW) \tSUBMIT TO DHCS BY :\n☐ DENIED #____ (LIST BELOW) \tSUBMIT TO DHCS BY :\nREVIEWER: \tDATE :\n(Signature)\nUNIT CHIEF: \tDATE :",
+      "last500": "s\nprovide data for the referring Provider (attending physician), rendering Provider (hospice Provider),\nand the starting day of service data fields to assist DHCS in its program integrity activities?\n(Reference: APL 25-008, page 16)\nYes \tNo\nCitation:\n64. Does the P&P state that at any time, DHCS may inspect and audit MCP records, documents, and\nelectronic systems to ensure compliance with service delivery and/or claim payments?\n(Reference: APL 25-008, page 16)\nYes \tNo\nCitation:\n\n-- 14 of 14 --\n\n"
+    },
+    "error": null
+  },
+  {
+    "filename": "MA.1001_v20240101_CEO20240129_no attachments.pdf",
+    "category": "MA",
+    "fileSizeBytes": 475703,
+    "pages": 45,
+    "totalCharCount": 159698,
+    "estimatedTokens": 39925,
+    "extractionTimeMs": 351,
+    "charsPerPage": 3549,
+    "emptyPages": [],
+    "extremelyLongPages": [],
+    "hasGarbledText": false,
+    "garbledSample": "☐☒☐☐’’’§§§§’’§’’’§’’’’§§’’’’’§“”’§§’“”’’’’“’’’’’’“”’’’’’“”’’’’“”’’’’’’’’’’’™––’’’§’’’’’’’’“”’’’’’’’§",
+    "repeatedPatterns": [],
+    "textSample": {
+      "first500": "Page 1 of 45\nPolicy: MA.1001\nTitle: OneCare Glossary of Terms\nDepartment: Office of Compliance\nSection: Regulatory Affairs & Compliance\nCEO Approval: /s/ Michael Hunn 01/29/2024\nEffective Date: 12/01/2005\nRevised Date: 01/01/2024\nApplicable to: ☐ Medi-Cal\n☒ OneCare\n☐ PACE\n☐ Administrative\nI. PURPOSE\nThis policy defines terms used in CalOptima Health’s OneCare policies and procedures, unless otherwise\nexpressly stated.\nII. DEFINITIONS\nAbuse: A Provider practice that is inconsistent with sound fis",
+      "last500": " Glossary of Terms OneCare\nRevised 06/01/2017 MA.1001 Glossary of Terms OneCare\nRevised 12/01/2017 MA.1001 Glossary of Terms OneCare\nRevised 01/01/2020 MA.1001 Glossary of Terms OneCare\nRevised 02/01/2021 MA.1001 Glossary of Terms OneCare\nRevised 10/01/2021 MA.1001 OneCare Glossary of Terms OneCare\nRevised 11/01/2022 MA.1001 OneCare Glossary of Terms OneCare\nRevised 10/01/2023 MA.1001 OneCare Glossary of Terms OneCare\nRevised 01/01/2024 MA.1001 OneCare Glossary of Terms OneCare\n\n-- 45 of 45 --\n\n"
+    },
+    "error": null
+  },
+  {
+    "filename": "GG.1600_CEO20241220_v20241201.pdf",
+    "category": "GG",
+    "fileSizeBytes": 393475,
+    "pages": 37,
+    "totalCharCount": 105512,
+    "estimatedTokens": 26378,
+    "extractionTimeMs": 307,
+    "charsPerPage": 2852,
+    "emptyPages": [],
+    "extremelyLongPages": [],
+    "hasGarbledText": false,
+    "garbledSample": "☒☐☐☐’’’’’’’’’’•’’’’’’’’’’’’’’’’’’’’’“”“”’’’’’’’’’’’’’’’’’’–’’’’’’’’’§§’§§§§§§§§§§’’’’’’’’’’’“”“”’’’’",
+    "repeatedPatterns": [
+      "10x: \"Performance\"",
+      "9x: \"Term Definition\"",
+      "5x: \"Practitioner Type Measure\""
+    ],
+    "textSample": {
+      "first500": "Page 1 of 37\nPolicy: GG.1600\nTitle: Access and Availability\nStandards\nDepartment: Medical Management\nSection: Quality Analytics\nCEO Approval: /s/ Michael Hunn 12/20/2024\nEffective Date: 12/01/1999\nRevised Date: 12/01/2024\nApplicable to: ☒ Medi-Cal\n☐ OneCare\n☐ PACE\n☐ Administrative\nI. PURPOSE\nThis policy establishes required access and availability standards, including Provider Network adequacy,\nfor Members to obtain effective, appropriate, and timely access to care and describes the process used",
+      "last500": "t impairment of health due\nto symptoms that do not constitute an Emergency Medical Condition,\nbut that are the result of an unforeseen illness, injury, or condition for\nwhich medical services are immediately required. Urgent Care is\nappropriately provided in a clinic, physician’s office, or in a hospital\nemergency department if a clinic or physician’s office is inaccessible.\nUrgent Care does not include primary care services or services provided\nto treat an Emergency Condition.\n\n-- 37 of 37 --\n\n"
+    },
+    "error": null
+  },
+  {
+    "filename": "PA.5052_20250221.pdf",
+    "category": "PA",
+    "fileSizeBytes": 50800,
+    "pages": 3,
+    "totalCharCount": 5119,
+    "estimatedTokens": 1280,
+    "extractionTimeMs": 26,
+    "charsPerPage": 1706,
+    "emptyPages": [],
+    "extremelyLongPages": [],
+    "hasGarbledText": false,
+    "garbledSample": "☐☐☒☐ºººººººº§§§",
+    "repeatedPatterns": [],
+    "textSample": {
+      "first500": "Page 1 of 3\nPolicy: PA.5052\nTitle: Utensil Cleaning Guidelines for\nNutritional Services\nDepartment: CalOptima Health PACE\nSection: Not Applicable\nCEO Approval: /s/ Michael Hunn 02/21/2025\nEffective Date: 10/01/2013\nRevised Date: 02/01/2025\nApplicable to: ☐ Medi-Cal\n☐ OneCare\n☒ PACE\n☐ Administrative\nI. PURPOSE\nThis policy outlines the procedure and guidelines for properly cleaning utensils used for nutritional services\nprovided at the CalOptima Health Program of All-Inclusive Care for the Elderly",
+      "last500": " location designated by CalOptima Health PACE at which Participants\nshall receive PCP services.\nParticipant An individual enrolled in the CalOptima Health PACE program.\nProgram of All-Inclusive\nCare for the Elderly\n(PACE)\nPACE is a long-term comprehensive health care program that helps older\nadults to remain as independent as possible. PACE coordinates and\nprovides all needed preventive, primary, acute and long-term care services\nso seniors can continue living in their community.\n\n-- 3 of 3 --\n\n"
+    },
+    "error": null
+  },
+  {
+    "filename": "PA.1005_CEO20250306_v20250301.pdf",
+    "category": "PA",
+    "fileSizeBytes": 51321,
+    "pages": 4,
+    "totalCharCount": 5472,
+    "estimatedTokens": 1368,
+    "extractionTimeMs": 25,
+    "charsPerPage": 1368,
+    "emptyPages": [],
+    "extremelyLongPages": [],
+    "hasGarbledText": false,
+    "garbledSample": "☐☐☒☐§§",
+    "repeatedPatterns": [],
+    "textSample": {
+      "first500": "Page 1 of 4\nPolicy: PA.1005\nTitle: Collection, Storage, and\nRemoval of Waste\nDepartment: CalOptima Health PACE\nSection: Not Applicable\nCEO Approval: /s/ Michael Hunn 03/06/2025\nEffective Date: 10/01/2013\nRevised Date: 03/01/2025\nApplicable to: ☐ Medi-Cal\n☐ OneCare\n☒ PACE\n☐ Administrative\nI. PURPOSE\nThis policy outlines the requirements and procedures that the CalOptima Health Program of All-\nInclusive Care for the Elderly (PACE) Center employees will follow to remove and dispose of solid\nwaste, ",
+      "last500": "e and Removal of Waste PACE\nRevised 05/01/2023 PA.1005 Collection, Storage and Removal of Waste PACE\nRevised 05/01/2024 PA.1005 Collection, Storage and Removal of Waste PACE\nRevised 03/01/2025 PA.1005 Collection, Storage and Removal of Waste PACE\n\n-- 3 of 4 --\n\nPage 4 of 4 PA.1005: Collection, Storage, and Removal of Waste Revised: 03/01/2025\nIX. GLOSSARY\nTerm Definition\nPACE Center The location designated by CalOptima Health PACE at which Participants\nshall receive PCP services.\n\n-- 4 of 4 --\n\n"
+    },
+    "error": null
+  },
+  {
+    "filename": "PA.5044_CEO20240509.pdf",
+    "category": "PA",
+    "fileSizeBytes": 55053,
+    "pages": 4,
+    "totalCharCount": 4527,
+    "estimatedTokens": 1132,
+    "extractionTimeMs": 24,
+    "charsPerPage": 1132,
+    "emptyPages": [],
+    "extremelyLongPages": [],
+    "hasGarbledText": false,
+    "garbledSample": "☐☐☒☐§§",
+    "repeatedPatterns": [],
+    "textSample": {
+      "first500": "Page 1 of 4\nPolicy: PA.5044\nTitle: Infection and Exposure Control\nPlan\nDepartment: CalOptima Health PACE\nSection: Not Applicable\nCEO Approval: /s/ Michael Hunn 05/09/2024\nEffective Date: 12/01/2014\nRevised Date: 05/01/2024\nApplicable to: ☐ Medi-Cal\n☐ OneCare\n☒ PACE\n☐ Administrative\nI. PURPOSE\nThis policy outlines how the CalOptima Health Program of All-Inclusive Care for the Elderly (PACE)\nwill eliminate or minimize PACE Participant and employee exposure to potentially infectious blood and\nother",
+      "last500": "ealth care program that helps older\nadults to remain as independent as possible. PACE coordinates and\nprovides all needed preventive, primary, acute and long-term care services\nso seniors can continue living in their community.\nUniversal/Standard\nPrecautions\nProcedures based on a risk assessment that make use of common sense\npractices and personal protective equipment use that protect healthcare\nproviders from infection and prevent the spread of infection from patient to\npatient.\n\n-- 4 of 4 --\n\n"
+    },
+    "error": null
+  },
+  {
+    "filename": "PA.5042_v20240301_CEO20240320_no attachments.pdf",
+    "category": "PA",
+    "fileSizeBytes": 57413,
+    "pages": 4,
+    "totalCharCount": 5931,
+    "estimatedTokens": 1483,
+    "extractionTimeMs": 26,
+    "charsPerPage": 1483,
+    "emptyPages": [],
+    "extremelyLongPages": [],
+    "hasGarbledText": false,
+    "garbledSample": "☐☐☒☐§§§§",
+    "repeatedPatterns": [],
+    "textSample": {
+      "first500": "Page 1 of 4\nPolicy: PA.5042\nTitle: Safe Environment for\nParticipants at the PACE Center\nDepartment: CalOptima Health PACE\nSection: Not Applicable\nCEO Approval: /s/ Michael Hunn 03/20/2024\nEffective Date: 10/01/2013\nRevised Date: 03/01/2024\nApplicable to: ☐ Medi-Cal\n☐ OneCare\n☒ PACE\n☐ Administrative\nI. PURPOSE\nThis policy outlines the precautions and measures taken to provide an appropriate and safe environment for\nParticipants at the CalOptima Health Program of All-Inclusive Care for the Elderly",
+      "last500": " equipment, or the\nlighting, inhaling, or exhaling of smoke from a pipe, cigar, or cigarette of\nany kind, including e-cigarettes and vaporizers.\nUnregulated Nicotine\nProduct\nAny product containing, or delivering, nicotine intended, or expected, for\nhuman consumption, or any part of such a product, that has not been\napproved, or otherwise certified, for sale by the United States Food and\nDrug Administration (USFDA) as a tobacco use cessation product, or for\nother medical purposes.\n\n-- 4 of 4 --\n\n"
+    },
+    "error": null
+  },
+  {
+    "filename": "PA.1004_CEO20250306_v20250301.pdf",
+    "category": "PA",
+    "fileSizeBytes": 59918,
+    "pages": 3,
+    "totalCharCount": 3616,
+    "estimatedTokens": 904,
+    "extractionTimeMs": 23,
+    "charsPerPage": 1205,
+    "emptyPages": [],
+    "extremelyLongPages": [],
+    "hasGarbledText": false,
+    "garbledSample": "☐☐☒☐§§",
+    "repeatedPatterns": [],
+    "textSample": {
+      "first500": "Page 1 of 3\nPolicy: PA.1004\nTitle: Maintenance and Housekeeping\nStandards\nDepartment: CalOptima Health PACE\nSection: Not Applicable\nCEO Approval: /s/ Michael Hunn 03/06/2025\nEffective Date: 10/01/2013\nRevised Date: 03/01/2025\nApplicable to: ☐ Medi-Cal\n☐ OneCare\n☒ PACE\n☐ Administrative\nI. PURPOSE\nThis policy outlines the procedures for the maintenance and cleanliness at the CalOptima Health\nProgram of All-Inclusive Care for the Elderly (PACE) Center.\nII. POLICY\nA. CalOptima Health PACE employees ",
+      "last500": "ce and Housekeeping Standards PACE\nRevised 04/01/2024 PA.1004 Maintenance and Housekeeping Standards PACE\nRevised 03/01/2025 PA.1004 Maintenance and Housekeeping Standards PACE\n\n-- 2 of 3 --\n\nPage 3 of 3 PA.1004: Maintenance and Housekeeping Standards Revised: 03/01/2025\nIX. GLOSSARY\nTerm Definition\nPACE Center The location designated by CalOptima Health PACE at which Participants\nshall receive PCP services.\nParticipant An individual enrolled in the CalOptima Health PACE program.\n\n-- 3 of 3 --\n\n"
+    },
+    "error": null
+  }
+]

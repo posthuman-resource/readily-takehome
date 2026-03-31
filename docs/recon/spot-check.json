@@ -1,0 +1,450 @@
+[
+  {
+    "filename": "AA.1000_CEO20250206_v20250201.pdf",
+    "category": "AA",
+    "pages": 72,
+    "firstChunkTokens": 2000,
+    "classification": {
+      "documentType": "policy",
+      "structure": "numbered sections",
+      "complexity": "moderate/multi-section",
+      "estimatedRequirementDensity": "medium",
+      "extractionConcerns": "clean text"
+    },
+    "error": null
+  },
+  {
+    "filename": "AA.1217_CEO20240725_v20240701.pdf",
+    "category": "AA",
+    "pages": 5,
+    "firstChunkTokens": 2000,
+    "classification": {
+      "documentType": "policy",
+      "structure": "numbered sections",
+      "complexity": "moderate/multi-section",
+      "estimatedRequirementDensity": "medium",
+      "extractionConcerns": "clean text"
+    },
+    "error": null
+  },
+  {
+    "filename": "AA.1400_CEO20241205_v20241205.pdf",
+    "category": "AA",
+    "pages": 9,
+    "firstChunkTokens": 2000,
+    "classification": {
+      "documentType": "policy",
+      "structure": "numbered sections",
+      "complexity": "moderate/multi-section",
+      "estimatedRequirementDensity": "medium",
+      "extractionConcerns": "clean text"
+    },
+    "error": null
+  },
+  {
+    "filename": "CMC.3001_CEO20240523.pdf",
+    "category": "CMC",
+    "pages": 6,
+    "firstChunkTokens": 2000,
+    "classification": {
+      "documentType": "policy",
+      "structure": "numbered sections",
+      "complexity": "moderate/multi-section",
+      "estimatedRequirementDensity": "high",
+      "extractionConcerns": "clean text"
+    },
+    "error": null
+  },
+  {
+    "filename": "CMC.9002__Policy_CEO20220818_DHCS20220701_PRC20220518_v.20220501_CEO.pdf",
+    "category": "CMC",
+    "pages": 13,
+    "firstChunkTokens": 2000,
+    "classification": {
+      "documentType": "policy",
+      "structure": "numbered sections",
+      "complexity": "moderate/multi-section",
+      "estimatedRequirementDensity": "high",
+      "extractionConcerns": "clean text"
+    },
+    "error": null
+  },
+  {
+    "filename": "CMC.9005__Policy_CEO20220818_DHCS20220701_PRC20220518_v.20220501_CEO.pdf",
+    "category": "CMC",
+    "pages": 20,
+    "firstChunkTokens": 2000,
+    "classification": {
+      "documentType": "policy",
+      "structure": "numbered sections",
+      "complexity": "complex/comprehensive",
+      "estimatedRequirementDensity": "high",
+      "extractionConcerns": "clean text"
+    },
+    "error": null
+  },
+  {
+    "filename": "DD.2001_CEO20240515_no attachments.pdf",
+    "category": "DD",
+    "pages": 11,
+    "firstChunkTokens": 2000,
+    "classification": {
+      "documentType": "policy",
+      "structure": "numbered sections",
+      "complexity": "moderate/multi-section",
+      "estimatedRequirementDensity": "high",
+      "extractionConcerns": "clean text"
+    },
+    "error": null
+  },
+  {
+    "filename": "DD.2006_CEO20241216_v20241201.pdf",
+    "category": "DD",
+    "pages": 11,
+    "firstChunkTokens": 2000,
+    "classification": {
+      "documentType": "policy",
+      "structure": "numbered sections",
+      "complexity": "moderate/multi-section",
+      "estimatedRequirementDensity": "high",
+      "extractionConcerns": "clean text"
+    },
+    "error": null
+  },
+  {
+    "filename": "DD.2014_CEO20250206_v20250101.pdf",
+    "category": "DD",
+    "pages": 10,
+    "firstChunkTokens": 2000,
+    "classification": {
+      "documentType": "policy",
+      "structure": "numbered sections",
+      "complexity": "moderate/multi-section",
+      "estimatedRequirementDensity": "high",
+      "extractionConcerns": "clean text"
+    },
+    "error": null
+  },
+  {
+    "filename": "EE.1101_CEO20241205_v20241205.pdf",
+    "category": "EE",
+    "pages": 22,
+    "firstChunkTokens": 2000,
+    "classification": {
+      "documentType": "policy",
+      "structure": "numbered sections",
+      "complexity": "complex/comprehensive",
+      "estimatedRequirementDensity": "high",
+      "extractionConcerns": "clean text"
+    },
+    "error": null
+  },
+  {
+    "filename": "EE.1116_CEO20241122_v20241101.pdf",
+    "category": "EE",
+    "pages": 5,
+    "firstChunkTokens": 2000,
+    "classification": {
+      "documentType": "policy",
+      "structure": "numbered sections",
+      "complexity": "moderate/multi-section",
+      "estimatedRequirementDensity": "high",
+      "extractionConcerns": "clean text"
+    },
+    "error": null
+  },
+  {
+    "filename": "EE.1145_CEO20250306_v20250306_final version.pdf",
+    "category": "EE",
+    "pages": 6,
+    "firstChunkTokens": 2000,
+    "classification": {
+      "documentType": "policy",
+      "structure": "numbered sections",
+      "complexity": "moderate/multi-section",
+      "estimatedRequirementDensity": "high",
+      "extractionConcerns": "clean text"
+    },
+    "error": null
+  },
+  {
+    "filename": "FF.1001_CEO20240523.pdf",
+    "category": "FF",
+    "pages": 8,
+    "firstChunkTokens": 2000,
+    "classification": {
+      "documentType": "policy",
+      "structure": "numbered sections",
+      "complexity": "moderate/multi-section",
+      "estimatedRequirementDensity": "high",
+      "extractionConcerns": "clean text"
+    },
+    "error": null
+  },
+  {
+    "filename": "FF.2001_20250221.pdf",
+    "category": "FF",
+    "pages": 16,
+    "firstChunkTokens": 2000,
+    "classification": {
+      "documentType": "policy",
+      "structure": "numbered sections",
+      "complexity": "complex/comprehensive",
+      "estimatedRequirementDensity": "high",
+      "extractionConcerns": "clean text"
+    },
+    "error": null
+  },
+  {
+    "filename": "FF.4002_CEO20240808_v20240801.pdf",
+    "category": "FF",
+    "pages": 5,
+    "firstChunkTokens": 2000,
+    "classification": {
+      "documentType": "policy",
+      "structure": "numbered sections",
+      "complexity": "moderate/multi-section",
+      "estimatedRequirementDensity": "medium",
+      "extractionConcerns": "clean text"
+    },
+    "error": null
+  },
+  {
+    "filename": "GA.4010_CEO20241220_v20241201.pdf",
+    "category": "GA",
+    "pages": 4,
+    "firstChunkTokens": 2000,
+    "classification": {
+      "documentType": "policy",
+      "structure": "numbered sections",
+      "complexity": "moderate/multi-section",
+      "estimatedRequirementDensity": "high",
+      "extractionConcerns": "clean text"
+    },
+    "error": null
+  },
+  {
+    "filename": "GA.7110_v20240201_CEO20240222_no attachments.pdf",
+    "category": "GA",
+    "pages": 11,
+    "firstChunkTokens": 2000,
+    "classification": {
+      "documentType": "policy",
+      "structure": "numbered sections",
+      "complexity": "moderate/multi-section",
+      "estimatedRequirementDensity": "high",
+      "extractionConcerns": "clean text"
+    },
+    "error": null
+  },
+  {
+    "filename": "GA.8048_CEO20250129_v20241231.pdf",
+    "category": "GA",
+    "pages": 4,
+    "firstChunkTokens": 2000,
+    "classification": {
+      "documentType": "policy",
+      "structure": "numbered sections",
+      "complexity": "moderate/multi-section",
+      "estimatedRequirementDensity": "high",
+      "extractionConcerns": "clean text"
+    },
+    "error": null
+  },
+  {
+    "filename": "GG.1100_CEO20250129_v20241231.pdf",
+    "category": "GG",
+    "pages": 15,
+    "firstChunkTokens": 2000,
+    "classification": {
+      "documentType": "policy",
+      "structure": "numbered sections",
+      "complexity": "moderate/multi-section",
+      "estimatedRequirementDensity": "medium",
+      "extractionConcerns": "clean text"
+    },
+    "error": null
+  },
+  {
+    "filename": "GG.1539_CEO20240523.pdf",
+    "category": "GG",
+    "pages": 13,
+    "firstChunkTokens": 2000,
+    "classification": {
+      "documentType": "policy",
+      "structure": "numbered sections",
+      "complexity": "moderate/multi-section",
+      "estimatedRequirementDensity": "high",
+      "extractionConcerns": "clean text"
+    },
+    "error": null
+  },
+  {
+    "filename": "GG.1900_CEO20250206_v20241231.pdf",
+    "category": "GG",
+    "pages": 25,
+    "firstChunkTokens": 2000,
+    "classification": {
+      "documentType": "policy",
+      "structure": "numbered sections",
+      "complexity": "complex/comprehensive",
+      "estimatedRequirementDensity": "high",
+      "extractionConcerns": "clean text"
+    },
+    "error": null
+  },
+  {
+    "filename": "HH.1101_v20231207_CEO20231207_no attachments.pdf",
+    "category": "HH",
+    "pages": 13,
+    "firstChunkTokens": 2000,
+    "classification": {
+      "documentType": "policy",
+      "structure": "numbered sections",
+      "complexity": "moderate/multi-section",
+      "estimatedRequirementDensity": "high",
+      "extractionConcerns": "clean text"
+    },
+    "error": null
+  },
+  {
+    "filename": "HH.3000_CEO20241119_v20241107.pdf",
+    "category": "HH",
+    "pages": 8,
+    "firstChunkTokens": 2000,
+    "classification": {
+      "documentType": "policy",
+      "structure": "numbered sections",
+      "complexity": "complex/comprehensive",
+      "estimatedRequirementDensity": "high",
+      "extractionConcerns": "clean text"
+    },
+    "error": null
+  },
+  {
+    "filename": "HH.5004_CEO20241120_v20241107.pdf",
+    "category": "HH",
+    "pages": 7,
+    "firstChunkTokens": 2000,
+    "classification": {
+      "documentType": "policy",
+      "structure": "numbered sections",
+      "complexity": "moderate/multi-section",
+      "estimatedRequirementDensity": "medium",
+      "extractionConcerns": "clean text"
+    },
+    "error": null
+  },
+  {
+    "filename": "MA.1001_v20240101_CEO20240129_no attachments.pdf",
+    "category": "MA",
+    "pages": 45,
+    "firstChunkTokens": 2000,
+    "classification": {
+      "documentType": "policy",
+      "structure": "numbered sections",
+      "complexity": "moderate/multi-section",
+      "estimatedRequirementDensity": "medium",
+      "extractionConcerns": "clean text"
+    },
+    "error": null
+  },
+  {
+    "filename": "MA.6022_CEO20240711_v20240701.pdf",
+    "category": "MA",
+    "pages": 8,
+    "firstChunkTokens": 2000,
+    "classification": {
+      "documentType": "policy",
+      "structure": "numbered sections",
+      "complexity": "moderate/multi-section",
+      "estimatedRequirementDensity": "high",
+      "extractionConcerns": "clean text"
+    },
+    "error": null
+  },
+  {
+    "filename": "MA.9124_CEO20241120_v20241107.pdf",
+    "category": "MA",
+    "pages": 7,
+    "firstChunkTokens": 2000,
+    "classification": {
+      "documentType": "policy",
+      "structure": "numbered sections",
+      "complexity": "moderate/multi-section",
+      "estimatedRequirementDensity": "medium",
+      "extractionConcerns": "has forms"
+    },
+    "error": null
+  },
+  {
+    "filename": "PA.1000_CEO20240924_v20240901.pdf",
+    "category": "PA",
+    "pages": 13,
+    "firstChunkTokens": 2000,
+    "classification": {
+      "documentType": "policy",
+      "structure": "numbered sections",
+      "complexity": "moderate/multi-section",
+      "estimatedRequirementDensity": "medium",
+      "extractionConcerns": "clean text"
+    },
+    "error": null
+  },
+  {
+    "filename": "PA.5042_v20240301_CEO20240320_no attachments.pdf",
+    "category": "PA",
+    "pages": 4,
+    "firstChunkTokens": 1483,
+    "classification": {
+      "documentType": "policy",
+      "structure": "numbered sections",
+      "complexity": "moderate/multi-section",
+      "estimatedRequirementDensity": "medium",
+      "extractionConcerns": "clean text"
+    },
+    "error": null
+  },
+  {
+    "filename": "PA.9002_CEO20240620_v20240601.pdf",
+    "category": "PA",
+    "pages": 6,
+    "firstChunkTokens": 2000,
+    "classification": {
+      "documentType": "policy",
+      "structure": "numbered sections",
+      "complexity": "complex/comprehensive",
+      "estimatedRequirementDensity": "high",
+      "extractionConcerns": "clean text"
+    },
+    "error": null
+  },
+  {
+    "filename": "Example Input Doc - Easy.pdf",
+    "category": "input",
+    "pages": 14,
+    "firstChunkTokens": 2000,
+    "classification": {
+      "documentType": "form",
+      "structure": "mixed",
+      "complexity": "moderate/multi-section",
+      "estimatedRequirementDensity": "high",
+      "extractionConcerns": "has forms"
+    },
+    "error": null
+  },
+  {
+    "filename": "Example Input Doc - Hard.pdf",
+    "category": "input",
+    "pages": 145,
+    "firstChunkTokens": 2000,
+    "classification": {
+      "documentType": "policy",
+      "structure": "numbered sections",
+      "complexity": "complex/comprehensive",
+      "estimatedRequirementDensity": "medium",
+      "extractionConcerns": "clean text"
+    },
+    "error": null
+  }
+]
