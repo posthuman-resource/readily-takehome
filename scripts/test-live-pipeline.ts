@@ -2,14 +2,18 @@
  * Live pipeline integration test.
  *
  * Runs the full ingestion pipeline end-to-end with real API calls:
- * 1. Clean database
- * 2. Ingest PA policy documents
- * 3. Ingest Easy regulatory document + extract requirements
- * 4. Run evidence matching
- * 5. Verify data quality
+ * 1. Ingest PA policy documents (skips if already done)
+ * 2. Ingest Easy regulatory document + extract requirements (skips if already done)
+ * 3. Run evidence matching (resumes from where it left off)
+ * 4. Verify data quality
+ *
+ * Fully idempotent — safe to re-run. Skips completed work.
+ *
+ * Pass --clean to wipe the database first.
  *
  * Usage:
  *   DATA_DIR=./data npx tsx scripts/test-live-pipeline.ts
+ *   DATA_DIR=./data npx tsx scripts/test-live-pipeline.ts --clean
  */
 import "../lib/env";
 import { db, sqlite } from "../lib/db";
@@ -32,65 +36,90 @@ import { resolve } from "node:path";
 import { readdirSync } from "node:fs";
 
 const EASY_PDF = resolve("data/Example Input Doc - Easy.pdf");
+const EASY_FILENAME = "Example Input Doc - Easy.pdf";
 const POLICIES_DIR = resolve("data/Public Policies/PA");
 const POLICY_COUNT = 12;
 
 async function main() {
   const totalStart = Date.now();
+  const doClean = process.argv.includes("--clean");
 
-  // ── Step 1: Clean slate ────────────────────────────────────────────
   console.log("\n╔══════════════════════════════════════╗");
   console.log("║   Live Pipeline Integration Test     ║");
   console.log("╚══════════════════════════════════════╝\n");
 
-  console.log("Step 1: Cleaning database...");
-  db.delete(evidence).run();
-  db.delete(requirements).run();
-  db.delete(policyChunks).run();
-  db.delete(policyDocuments).run();
-  db.delete(regulatoryDocuments).run();
-  db.delete(chatMessages).run();
-  console.log("  All tables cleared.\n");
-
-  // ── Step 2: Ingest PA policy documents ─────────────────────────────
-  console.log(`Step 2: Ingesting ${POLICY_COUNT} PA policy documents...`);
-  const policyStart = Date.now();
-
-  const pdfFiles = readdirSync(POLICIES_DIR)
-    .filter((f) => f.endsWith(".pdf"))
-    .sort() // deterministic order
-    .slice(0, POLICY_COUNT);
-
-  console.log(`  Selected ${pdfFiles.length} PDFs from PA category`);
-
-  for (let i = 0; i < pdfFiles.length; i++) {
-    const file = pdfFiles[i];
-    const filePath = resolve(POLICIES_DIR, file);
-    const docId = randomUUID();
-
-    db.insert(policyDocuments)
-      .values({
-        id: docId,
-        filename: filePath,
-        category: "PA",
-        title: file.replace(".pdf", ""),
-        status: "pending",
-      })
-      .run();
-
-    try {
-      await processPolicy(docId, (status, detail) => {
-        if (status === "complete") {
-          console.log(`  [${i + 1}/${pdfFiles.length}] ${file} - ${detail}`);
-        }
-      });
-    } catch (err) {
-      console.error(`  [${i + 1}/${pdfFiles.length}] ${file} - ERROR: ${err}`);
-    }
+  // ── Step 1: Optional clean ────────────────────────────────────────
+  if (doClean) {
+    console.log("Step 1: Cleaning database (--clean flag)...");
+    db.delete(evidence).run();
+    db.delete(requirements).run();
+    db.delete(policyChunks).run();
+    db.delete(policyDocuments).run();
+    db.delete(regulatoryDocuments).run();
+    db.delete(chatMessages).run();
+    console.log("  All tables cleared.\n");
+  } else {
+    console.log("Step 1: Skipping clean (no --clean flag). Will resume from existing data.\n");
   }
 
-  const policyElapsed = ((Date.now() - policyStart) / 1000).toFixed(1);
-  console.log(`  Policy ingestion completed in ${policyElapsed}s`);
+  // ── Step 2: Ingest PA policy documents ─────────────────────────────
+  const existingComplete = db
+    .select()
+    .from(policyDocuments)
+    .where(eq(policyDocuments.status, "complete"))
+    .all();
+
+  if (existingComplete.length >= POLICY_COUNT) {
+    console.log(`Step 2: Skipping policy ingestion (${existingComplete.length} already complete).\n`);
+  } else {
+    console.log(`Step 2: Ingesting PA policy documents (${existingComplete.length} already complete)...`);
+    const policyStart = Date.now();
+
+    const pdfFiles = readdirSync(POLICIES_DIR)
+      .filter((f) => f.endsWith(".pdf"))
+      .sort()
+      .slice(0, POLICY_COUNT);
+
+    // Find which files are already ingested
+    const existingFilenames = new Set(
+      db.select({ filename: policyDocuments.filename }).from(policyDocuments).all().map((r) => r.filename)
+    );
+
+    let processed = existingComplete.length;
+    for (let i = 0; i < pdfFiles.length; i++) {
+      const file = pdfFiles[i];
+      const filePath = resolve(POLICIES_DIR, file);
+
+      if (existingFilenames.has(filePath)) {
+        continue; // already registered
+      }
+
+      const docId = randomUUID();
+      db.insert(policyDocuments)
+        .values({
+          id: docId,
+          filename: filePath,
+          category: "PA",
+          title: file.replace(".pdf", ""),
+          status: "pending",
+        })
+        .run();
+
+      try {
+        await processPolicy(docId, (status, detail) => {
+          if (status === "complete") {
+            processed++;
+            console.log(`  [${processed}/${POLICY_COUNT}] ${file} - ${detail}`);
+          }
+        });
+      } catch (err) {
+        console.error(`  ${file} - ERROR: ${err}`);
+      }
+    }
+
+    const policyElapsed = ((Date.now() - policyStart) / 1000).toFixed(1);
+    console.log(`  Policy ingestion completed in ${policyElapsed}s\n`);
+  }
 
   // Verify policy ingestion
   const [polDocCount] = db.select({ count: count() }).from(policyDocuments).all();
@@ -101,41 +130,68 @@ async function main() {
     .all();
   const [chunkCount] = db.select({ count: count() }).from(policyChunks).all();
 
-  // Check embedding sizes
   const sampleChunk = sqlite
     .prepare("SELECT embedding FROM policy_chunks WHERE embedding IS NOT NULL LIMIT 1")
     .get() as { embedding: Buffer } | undefined;
   const embeddingSize = sampleChunk?.embedding?.length ?? 0;
 
-  console.log(`\n  Policy documents: ${polDocCount.count} total, ${completePolicies.length} complete`);
+  console.log(`  Policy documents: ${polDocCount.count} total, ${completePolicies.length} complete`);
   console.log(`  Policy chunks: ${chunkCount.count}`);
   console.log(`  Embedding blob size: ${embeddingSize} bytes (expected: ${1536 * 4} = 6144)\n`);
 
   // ── Step 3: Ingest Easy regulatory document ────────────────────────
-  console.log("Step 3: Ingesting Easy regulatory document...");
-  const reqStart = Date.now();
+  let regDocId: string;
 
-  const extracted = await extractPdfText(EASY_PDF);
-  console.log(`  Extracted ${extracted.pageCount} pages, ${extracted.text.length} chars`);
+  const existingRegDoc = db
+    .select()
+    .from(regulatoryDocuments)
+    .where(eq(regulatoryDocuments.filename, EASY_FILENAME))
+    .get();
 
-  const regDocId = randomUUID();
-  db.insert(regulatoryDocuments)
-    .values({
-      id: regDocId,
-      filename: "Example Input Doc - Easy.pdf",
-      title: "Example Input Doc - Easy",
-      rawText: extracted.text,
-      pageCount: extracted.pageCount,
-      status: "text_extracted",
-    })
-    .run();
+  const [existingReqCount] = existingRegDoc
+    ? db
+        .select({ count: count() })
+        .from(requirements)
+        .where(eq(requirements.regulatoryDocumentId, existingRegDoc.id))
+        .all()
+    : [{ count: 0 }];
 
-  console.log("  Extracting requirements (calling Claude Opus)...");
-  await extractRequirements(regDocId, (status, detail) => {
-    console.log(`    [${status}] ${detail}`);
-  });
+  if (existingRegDoc && existingReqCount.count > 0) {
+    regDocId = existingRegDoc.id;
+    console.log(`Step 3: Skipping requirement extraction (${existingReqCount.count} requirements already exist for "${EASY_FILENAME}").\n`);
+  } else {
+    console.log("Step 3: Ingesting Easy regulatory document...");
+    const reqStart = Date.now();
 
-  const reqElapsed = ((Date.now() - reqStart) / 1000).toFixed(1);
+    if (existingRegDoc) {
+      // Doc registered but requirements not extracted yet
+      regDocId = existingRegDoc.id;
+      console.log("  Document already registered, extracting requirements...");
+    } else {
+      const extracted = await extractPdfText(EASY_PDF);
+      console.log(`  Extracted ${extracted.pageCount} pages, ${extracted.text.length} chars`);
+
+      regDocId = randomUUID();
+      db.insert(regulatoryDocuments)
+        .values({
+          id: regDocId,
+          filename: EASY_FILENAME,
+          title: "Example Input Doc - Easy",
+          rawText: extracted.text,
+          pageCount: extracted.pageCount,
+          status: "text_extracted",
+        })
+        .run();
+    }
+
+    console.log("  Extracting requirements (calling Claude Opus)...");
+    await extractRequirements(regDocId, (status, detail) => {
+      console.log(`    [${status}] ${detail}`);
+    });
+
+    const reqElapsed = ((Date.now() - reqStart) / 1000).toFixed(1);
+    console.log(`  Requirement extraction completed in ${reqElapsed}s\n`);
+  }
 
   const [reqCount] = db
     .select({ count: count() })
@@ -149,11 +205,11 @@ async function main() {
     .where(eq(regulatoryDocuments.id, regDocId))
     .get();
 
-  console.log(`\n  Regulatory document status: ${regDoc?.status}`);
-  console.log(`  Requirements extracted: ${reqCount.count}`);
-  console.log(`  Requirement extraction completed in ${reqElapsed}s\n`);
+  console.log(`  Regulatory document status: ${regDoc?.status}`);
+  console.log(`  Requirements extracted: ${reqCount.count}\n`);
 
   // ── Step 4: Run evidence matching ──────────────────────────────────
+  // matchEvidence is already resumable — it skips requirements that have evidence
   console.log("Step 4: Running evidence matching (calling Claude Opus)...");
   const evidenceStart = Date.now();
 
@@ -266,7 +322,6 @@ async function main() {
     `${evidenceCount.count} evidence records`
   );
 
-  // Check that evidence records have real data
   const allEvidence = db.select().from(evidence).all();
   const hasRealData = allEvidence.every(
     (e) => e.status && e.excerpt && e.reasoning && e.confidence !== null

@@ -1,5 +1,7 @@
 import Link from "next/link";
 import { getDocumentsWithStats, type DocumentWithStats } from "@/lib/db/queries";
+
+export const dynamic = "force-dynamic";
 import { ScrollArea } from "@/components/ui/scroll-area";
 import { Badge } from "@/components/ui/badge";
 import { DocumentStatusPoller } from "./document-status-poller";
