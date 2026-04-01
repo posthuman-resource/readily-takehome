@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import { Geist, Geist_Mono } from "next/font/google";
 import { TooltipProvider } from "@/components/ui/tooltip";
 import { TopNav } from "@/components/top-nav";
+import { ChatPanel } from "@/components/chat/chat-panel";
 import "./globals.css";
 
 const geistSans = Geist({
@@ -33,6 +34,7 @@ export default function RootLayout({
         <TooltipProvider>
           <TopNav />
           <div className="flex-1 flex flex-col min-h-0">{children}</div>
+          <ChatPanel />
         </TooltipProvider>
       </body>
     </html>

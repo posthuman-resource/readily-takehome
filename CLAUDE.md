@@ -70,6 +70,9 @@ These may differ from your training data. When in doubt, use context7 MCP to loo
 - `maxSteps` is **deprecated** - use `stopWhen: stepCountIs(N)` instead
 - Tool definitions use `inputSchema` (not `parameters`)
 - `useChat` imports from `@ai-sdk/react` (not `ai/react`)
+- `useChat` v6 API: returns `{ messages, sendMessage, status }` — NOT `input`/`handleSubmit`/`isLoading`. Manage input state yourself. Use `sendMessage({ text })` to send. Status is `'submitted' | 'streaming' | 'ready' | 'error'`.
+- `useChat` v6 requires a `transport` option: `new DefaultChatTransport({ api: '/api/chat' })` imported from `'ai'`
+- Message parts use typed tool format: `part.type === 'tool-<toolName>'` with `part.state` (`'input-streaming' | 'input-available' | 'output-available' | 'output-error'`), `part.input`, `part.output` directly on the part — NOT `part.toolInvocation`
 - Streaming markdown: `streamdown` package
 
 ## Next.js Gotchas
