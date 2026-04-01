@@ -17,7 +17,7 @@ const EvidenceEvaluationSchema = z.object({
       status: z.enum(["met", "not_met", "partial", "unclear"]),
       excerpt: z.string().describe("The specific text from the policy that provides evidence"),
       reasoning: z.string().describe("Why this status was assigned"),
-      confidence: z.number().min(0).max(1),
+      confidence: z.number().describe("Confidence score between 0 and 1"),
     })
   ),
 });

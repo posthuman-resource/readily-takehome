@@ -4,6 +4,10 @@
 
 Create the unified `processDocument()` function that orchestrates the full ingestion pipeline for both regulatory and policy documents. This is THE central piece that both CLI and API entry points call.
 
+## Context: Live Pipeline Test (07b)
+
+A separate task (`docs/7b-in-progress.md`) is running the pipeline end-to-end with real API calls and real documents. By the time you run, the database may already contain real policy documents, chunks, requirements, and evidence. Your orchestrator should work with whatever state the DB is in. Do not wipe existing data.
+
 ## Details
 
 ### Important: Next.js 16

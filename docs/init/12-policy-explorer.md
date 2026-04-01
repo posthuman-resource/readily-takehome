@@ -4,6 +4,10 @@
 
 Build the Policy Explorer view: browse organizational policies by category, search across all policy text, and see which requirements each policy satisfies (reverse lookup).
 
+## Context: Live Data
+
+A separate process has been ingesting real documents with real API calls (see `docs/7b-in-progress.md`). The database should contain real policy documents, chunks with embeddings, extracted requirements, and evidence. Build against this real data, not synthetic test data.
+
 ## Details
 
 ### Important: Next.js 16
