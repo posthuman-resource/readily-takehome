@@ -72,6 +72,11 @@ These may differ from your training data. When in doubt, use context7 MCP to loo
 - `useChat` imports from `@ai-sdk/react` (not `ai/react`)
 - Streaming markdown: `streamdown` package
 
+## Next.js Gotchas
+
+- `better-sqlite3`, `sqlite-vec`, and `@sqliteai/sqlite-vector` must be listed in `serverExternalPackages` in `next.config.ts`. Without this, Turbopack bundles them and `import.meta.resolve` fails at runtime.
+- `pdf-parse` (pdfjs-dist) also fails under Turbopack dev server because it can't resolve its worker module. It works fine when run via `tsx` scripts. Add `pdfjs-dist` to `serverExternalPackages` if needed in future tasks.
+
 ## For Task Executors
 
 - The task plan lives in `docs/init.md` and `docs/init/*.md`
