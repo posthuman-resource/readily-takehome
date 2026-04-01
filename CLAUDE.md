@@ -74,6 +74,7 @@ These may differ from your training data. When in doubt, use context7 MCP to loo
 - `useChat` v6 requires a `transport` option: `new DefaultChatTransport({ api: '/api/chat' })` imported from `'ai'`
 - Message parts use typed tool format: `part.type === 'tool-<toolName>'` with `part.state` (`'input-streaming' | 'input-available' | 'output-available' | 'output-error'`), `part.input`, `part.output` directly on the part — NOT `part.toolInvocation`
 - Streaming markdown: `streamdown` package
+- **Anthropic API rejects `minimum`/`maximum` on number types** in JSON schema. Don't use Zod `.min()`/`.max()` on `z.number()` in schemas passed to Anthropic models — use `.describe()` instead.
 
 ## Next.js Gotchas
 
