@@ -268,7 +268,7 @@ function IngestionStatusCard({ data }: { data: Record<string, unknown> }) {
   const status = data.status as string;
   const isActive =
     status &&
-    !["completed", "error"].includes(status);
+    !["complete", "error"].includes(status);
 
   return (
     <div className="border rounded-md overflow-hidden text-xs">

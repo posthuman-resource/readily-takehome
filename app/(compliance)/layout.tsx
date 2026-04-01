@@ -13,7 +13,7 @@ function compliancePercent(doc: DocumentWithStats): number {
 
 function statusColor(status: string): string {
   switch (status) {
-    case "completed":
+    case "complete":
       return "bg-emerald-500";
     case "processing":
     case "extracting_text":
@@ -28,7 +28,7 @@ function statusColor(status: string): string {
 }
 
 function isProcessing(status: string): boolean {
-  return !["completed", "error"].includes(status);
+  return !["complete", "error"].includes(status);
 }
 
 export default function ComplianceLayout({

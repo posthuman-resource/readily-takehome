@@ -23,7 +23,7 @@ export function DocumentStatusPoller({
   const router = useRouter();
 
   useEffect(() => {
-    if (["completed", "error"].includes(status)) return;
+    if (["complete", "error"].includes(status)) return;
 
     const interval = setInterval(async () => {
       try {
@@ -32,7 +32,7 @@ export function DocumentStatusPoller({
         const data = await res.json();
         setStatus(data.status);
         setMessage(data.statusMessage ?? null);
-        if (["completed", "error"].includes(data.status)) {
+        if (["complete", "error"].includes(data.status)) {
           clearInterval(interval);
           router.refresh();
         }

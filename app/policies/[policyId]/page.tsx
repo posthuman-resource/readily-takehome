@@ -1,4 +1,5 @@
 import Link from "next/link";
+import path from "node:path";
 import { notFound } from "next/navigation";
 import { ArrowLeft } from "lucide-react";
 import { Badge } from "@/components/ui/badge";
@@ -63,7 +64,7 @@ export default async function PolicyDetailPage(
           <ArrowLeft className="h-3 w-3" />
           Back to policies
         </Link>
-        <h1 className="text-lg font-semibold">{policy.title || policy.filename}</h1>
+        <h1 className="text-lg font-semibold">{policy.title || path.basename(policy.filename)}</h1>
         <div className="flex items-center gap-3 mt-1">
           <Badge variant="secondary">{policy.category}</Badge>
           {policy.pageCount != null && (
@@ -135,7 +136,7 @@ export default async function PolicyDetailPage(
           )}
 
           {/* Full text */}
-          <PolicyTextView chunks={chunks} policyFilename={policy.filename} />
+          <PolicyTextView chunks={chunks} policyFilename={path.basename(policy.filename)} />
         </div>
       </ScrollArea>
     </div>

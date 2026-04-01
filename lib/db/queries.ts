@@ -1,3 +1,4 @@
+import path from "node:path";
 import { db } from ".";
 import {
   regulatoryDocuments,
@@ -7,6 +8,11 @@ import {
   policyDocuments,
 } from "./schema";
 import { eq, sql, count, and, like, inArray } from "drizzle-orm";
+
+/** Strip absolute paths to just the filename for display */
+function basename(filepath: string): string {
+  return path.basename(filepath);
+}
 
 export type DocumentWithStats = {
   id: string;
@@ -60,7 +66,7 @@ export function getDocumentsWithStats(): DocumentWithStats[] {
     const s = statsMap.get(doc.id);
     return {
       id: doc.id,
-      filename: doc.filename,
+      filename: basename(doc.filename),
       title: doc.title,
       description: doc.description,
       status: doc.status,
@@ -190,7 +196,7 @@ export function getRequirementsForDocument(
           excerpt: ev.excerpt,
           reasoning: ev.reasoning,
           confidence: ev.confidence,
-          policyFilename: policy?.filename ?? "Unknown",
+          policyFilename: policy ? basename(policy.filename) : "Unknown",
           policyCategory: policy?.category ?? "Unknown",
           pageNumber: chunk?.pageNumber ?? null,
         };
@@ -263,7 +269,7 @@ export function getPoliciesWithRequirementCounts(
 
   return policies.map((p) => ({
     id: p.id,
-    filename: p.filename,
+    filename: basename(p.filename),
     category: p.category,
     title: p.title,
     pageCount: p.pageCount,
@@ -343,7 +349,10 @@ export function getRequirementsSatisfiedByPolicy(
     .orderBy(requirements.requirementNumber)
     .all();
 
-  return rows;
+  return rows.map((r) => ({
+    ...r,
+    regulatoryDocumentFilename: basename(r.regulatoryDocumentFilename),
+  }));
 }
 
 export function getPolicyChunkTexts(

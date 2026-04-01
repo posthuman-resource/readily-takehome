@@ -134,7 +134,7 @@ export function PolicyList({
                         href={`/policies/${policy.id}`}
                         className="text-sm font-medium hover:underline text-foreground"
                       >
-                        {policy.filename}
+                        {policy.filename.split("/").pop() || policy.filename}
                       </Link>
                     </td>
                     <td className="py-2.5 pr-4">
