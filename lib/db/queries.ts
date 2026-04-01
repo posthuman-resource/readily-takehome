@@ -206,3 +206,156 @@ export function getDocumentById(id: string) {
     .where(eq(regulatoryDocuments.id, id))
     .get();
 }
+
+// --- Policy Explorer Queries ---
+
+export type PolicyWithRequirementCount = {
+  id: string;
+  filename: string;
+  category: string;
+  title: string | null;
+  pageCount: number | null;
+  status: string;
+  createdAt: string;
+  requirementsSatisfied: number;
+};
+
+export function getPoliciesWithRequirementCounts(
+  category?: string
+): PolicyWithRequirementCount[] {
+  let policies;
+  try {
+    if (category) {
+      policies = db
+        .select()
+        .from(policyDocuments)
+        .where(eq(policyDocuments.category, category))
+        .orderBy(policyDocuments.filename)
+        .all();
+    } else {
+      policies = db
+        .select()
+        .from(policyDocuments)
+        .orderBy(policyDocuments.filename)
+        .all();
+    }
+  } catch {
+    return [];
+  }
+
+  if (policies.length === 0) return [];
+
+  const policyIds = policies.map((p) => p.id);
+
+  // Count distinct requirements satisfied per policy
+  const counts = db
+    .select({
+      policyDocumentId: policyChunks.policyDocumentId,
+      requirementsSatisfied: count(sql`DISTINCT ${evidence.requirementId}`),
+    })
+    .from(policyChunks)
+    .innerJoin(evidence, eq(evidence.policyChunkId, policyChunks.id))
+    .where(inArray(policyChunks.policyDocumentId, policyIds))
+    .groupBy(policyChunks.policyDocumentId)
+    .all();
+
+  const countMap = new Map(counts.map((c) => [c.policyDocumentId, c.requirementsSatisfied]));
+
+  return policies.map((p) => ({
+    id: p.id,
+    filename: p.filename,
+    category: p.category,
+    title: p.title,
+    pageCount: p.pageCount,
+    status: p.status,
+    createdAt: p.createdAt,
+    requirementsSatisfied: countMap.get(p.id) ?? 0,
+  }));
+}
+
+export function getCategoryCounts(): { category: string; count: number }[] {
+  try {
+    return db
+      .select({
+        category: policyDocuments.category,
+        count: count(),
+      })
+      .from(policyDocuments)
+      .groupBy(policyDocuments.category)
+      .orderBy(policyDocuments.category)
+      .all();
+  } catch {
+    return [];
+  }
+}
+
+export function getPolicyById(id: string) {
+  return db
+    .select()
+    .from(policyDocuments)
+    .where(eq(policyDocuments.id, id))
+    .get();
+}
+
+export type RequirementSatisfiedByPolicy = {
+  id: string;
+  requirementNumber: string | null;
+  text: string;
+  reference: string | null;
+  category: string | null;
+  complianceStatus: string | null;
+  regulatoryDocumentId: string;
+  regulatoryDocumentTitle: string | null;
+  regulatoryDocumentFilename: string;
+  evidenceExcerpt: string | null;
+  evidenceReasoning: string | null;
+  evidenceStatus: string;
+  evidenceConfidence: number | null;
+};
+
+export function getRequirementsSatisfiedByPolicy(
+  policyId: string
+): RequirementSatisfiedByPolicy[] {
+  const rows = db
+    .select({
+      id: requirements.id,
+      requirementNumber: requirements.requirementNumber,
+      text: requirements.text,
+      reference: requirements.reference,
+      category: requirements.category,
+      complianceStatus: requirements.complianceStatus,
+      regulatoryDocumentId: requirements.regulatoryDocumentId,
+      regulatoryDocumentTitle: regulatoryDocuments.title,
+      regulatoryDocumentFilename: regulatoryDocuments.filename,
+      evidenceExcerpt: evidence.excerpt,
+      evidenceReasoning: evidence.reasoning,
+      evidenceStatus: evidence.status,
+      evidenceConfidence: evidence.confidence,
+    })
+    .from(requirements)
+    .innerJoin(evidence, eq(evidence.requirementId, requirements.id))
+    .innerJoin(policyChunks, eq(policyChunks.id, evidence.policyChunkId))
+    .innerJoin(
+      regulatoryDocuments,
+      eq(regulatoryDocuments.id, requirements.regulatoryDocumentId)
+    )
+    .where(eq(policyChunks.policyDocumentId, policyId))
+    .orderBy(requirements.requirementNumber)
+    .all();
+
+  return rows;
+}
+
+export function getPolicyChunkTexts(
+  policyId: string
+): { pageNumber: number | null; text: string }[] {
+  return db
+    .select({
+      pageNumber: policyChunks.pageNumber,
+      text: policyChunks.text,
+    })
+    .from(policyChunks)
+    .where(eq(policyChunks.policyDocumentId, policyId))
+    .orderBy(policyChunks.pageNumber, policyChunks.chunkIndex)
+    .all();
+}

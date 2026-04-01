@@ -42,7 +42,7 @@ export default async function DocumentPage(
   };
 
   return (
-    <div className="h-screen flex flex-col">
+    <div className="h-[calc(100vh-2.75rem)] flex flex-col">
       {/* Header */}
       <header className="border-b px-6 py-4 shrink-0">
         <h1 className="text-lg font-semibold">

@@ -39,7 +39,7 @@ export default function ComplianceLayout({
   return (
     <div className="flex h-full">
       {/* Sidebar */}
-      <aside className="w-80 shrink-0 border-r bg-sidebar flex flex-col h-screen sticky top-0">
+      <aside className="w-80 shrink-0 border-r bg-sidebar flex flex-col h-[calc(100vh-2.75rem)] sticky top-[2.75rem]">
         <div className="p-4 border-b">
           <Link href="/" className="block">
             <h1 className="text-lg font-semibold text-sidebar-foreground">
